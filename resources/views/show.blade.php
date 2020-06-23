@@ -20,6 +20,7 @@
                         </form>
                     </div>
                 </div>
+                <div class="addthis_inline_share_toolbox"></div>
                 <table class="table mt-4">
                     <tr>
                         <th>Name</th>
@@ -35,7 +36,7 @@
                     </tr>
                     <tr>
                         <th>Size</th>
-                        <td>{{$ringtone->size}}</td>
+                        <td>{{$ringtone->size}} bytes</td>
                     </tr>
                     <tr>
                         <th>Category</th>
@@ -50,9 +51,23 @@
             <div class="col-md-4 my-4">
                 <div class="card-header">Categories</div>
                 @foreach(App\Category::all() as $singlecategory)
-                    <div class="card-header bg-secondary"><a class="text-white" href="{{route('ringtones.category', $singlecategory->id)}}">{{$singlecategory->name}}</a></div>
+                    <div class="card-header bg-dark"><a class="text-white" href="{{route('ringtones.category', $singlecategory->id)}}">{{$singlecategory->name}}</a></div>
                 @endforeach
             </div>
         </div>
+        <div id="wpac-comment"></div>
+        <script type="text/javascript">
+            wpac_init = window.wpac_init || [];
+            wpac_init.push({widget: 'Comment', id: 25852});
+            (function() {
+                if ('WIDGETPACK_LOADED' in window) return;
+                WIDGETPACK_LOADED = true;
+                var mc = document.createElement('script');
+                mc.type = 'text/javascript';
+                mc.async = true;
+                mc.src = 'https://embed.widgetpack.com/widget.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+            })();
+        </script>
     </div>
 @endsection

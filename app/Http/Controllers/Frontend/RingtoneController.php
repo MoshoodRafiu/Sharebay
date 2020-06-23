@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Response;
 class RingtoneController extends Controller
 {
     public function index(){
-        $ringtones = Ringtone::paginate(20);
+        $ringtones = Ringtone::paginate(5);
         return view('index', compact('ringtones'));
     }
     public function show($id, $slug){
@@ -27,7 +27,7 @@ class RingtoneController extends Controller
         return Response::download($filePath);
     }
     public function category($id){
-        $ringtones = Ringtone::where('category_id', $id)->paginate(20);
+        $ringtones = Ringtone::where('category_id', $id)->paginate(5);
         $category = Category::find($id);
         return view('category', compact('ringtones', 'category'));
     }

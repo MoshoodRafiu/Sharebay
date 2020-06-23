@@ -31,7 +31,7 @@
             <div class="col-md-4 my-4">
                 <div class="card-header">Categories</div>
                 @foreach(App\Category::all() as $singlecategory)
-                    <div class="card-header @if($singlecategory->id === $category->id) bg-light @else bg-secondary @endif"><a class=" @if($singlecategory->id === $category->id) text-secondary @else text-white @endif" href="{{route('ringtones.category', $singlecategory->id)}}">{{$singlecategory->name}}</a></div>
+                    <div class="card-header @if($singlecategory->id === $category->id) bg-secondary @else bg-dark @endif"><a class="text-white" href="{{route('ringtones.category', $singlecategory->id)}}">{{$singlecategory->name}}</a></div>
                 @endforeach
             </div>
             {{$ringtones->links()}}
