@@ -21,8 +21,8 @@
             </div>
             <div class="col-md-4 my-4">
                 <div class="card-header">Categories</div>
-                @foreach(App\Category::all() as $category)
-                    <div class="card-header" style="background-color: #ccc">{{$category->name}}</div>
+                @foreach(App\Category::all() as $singlecategory)
+                    <div class="card-header bg-secondary"><a class="text-white" href="{{route('ringtones.category', $singlecategory->id)}}">{{$singlecategory->name}}</a></div>
                 @endforeach
             </div>
             {{$ringtones->links()}}

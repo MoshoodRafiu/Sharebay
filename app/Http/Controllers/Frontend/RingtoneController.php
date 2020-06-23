@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Ringtone;
+use App\Category;
 use Illuminate\Support\Facades\Response;
 
 class RingtoneController extends Controller
@@ -24,5 +25,10 @@ class RingtoneController extends Controller
         $ringtone->increment('downloads');
         $ringtone->save();
         return Response::download($filePath);
+    }
+    public function category($id){
+        $ringtones = Ringtone::where('category_id', $id)->paginate(20);
+        $category = Category::find($id);
+        return view('category', compact('ringtones', 'category'));
     }
 }
