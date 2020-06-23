@@ -14,7 +14,7 @@
                         </audio>
                     </div>
                     <div class="card-footer">
-                        <a href="">Info and Download</a>
+                        <a href="{{route('ringtones.show', [$ringtone->id,$ringtone->slug])}}">Info and Download</a>
                     </div>
                 </div>
                 @endforeach

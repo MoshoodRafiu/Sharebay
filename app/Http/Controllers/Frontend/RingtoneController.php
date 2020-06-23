@@ -12,4 +12,8 @@ class RingtoneController extends Controller
         $ringtones = Ringtone::paginate(20);
         return view('index', compact('ringtones'));
     }
+    public function show($id, $slug){
+        $ringtone = Ringtone::where('id', $id)->where('slug', $slug)->first();
+        return view('show', compact('ringtone'));
+    }
 }
