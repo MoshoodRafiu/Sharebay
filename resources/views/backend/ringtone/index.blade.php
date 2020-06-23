@@ -34,7 +34,7 @@
                                     <td>{{$ringtone->description}}</td>
                                     <td class="d-flex align-items-center">
                                         <div>
-                                            <audio controls>
+                                            <audio controls onplay="pauseOthers(this)">
                                                 <source src="{{asset('/audio')}}/{{$ringtone->file}}" type="audio/ogg">
                                                 Your browser does not support this element
                                             </audio>

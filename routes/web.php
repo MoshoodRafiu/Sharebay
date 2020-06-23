@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Auth::routes(['register'=>false]);
-Route::group(array('namespace'=>'Backend'), function (){
+Route::group(array('namespace'=>'Backend', 'middleware'=>'auth'), function (){
    Route::resource('/ringtones', 'RingtoneController');
 });
 Route::get('/home', 'HomeController@index')->name('home');
