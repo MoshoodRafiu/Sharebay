@@ -16,7 +16,8 @@ class RingtoneController extends Controller
      */
     public function index()
     {
-        //
+        $ringtones = Ringtone::latest()->get();
+        return view('backend.ringtone.index', compact('ringtones'));
     }
 
     /**
@@ -81,7 +82,8 @@ class RingtoneController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ringtone = Ringtone::find($id);
+        return view('backend.ringtone.edit', compact('ringtone'));
     }
 
     /**
