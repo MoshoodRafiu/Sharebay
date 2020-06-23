@@ -13,12 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes(['register'=>false]);
 Route::group(array('namespace'=>'Backend', 'middleware'=>'auth'), function (){
    Route::resource('/ringtones', 'RingtoneController');
+});
+Route::group(array('namespace'=>'Frontend'), function (){
+    Route::get('/', 'RingtoneController@index');
 });
 Route::get('/home', 'HomeController@index')->name('home');
