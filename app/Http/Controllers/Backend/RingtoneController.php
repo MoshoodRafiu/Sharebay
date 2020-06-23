@@ -95,7 +95,35 @@ class RingtoneController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required|min:3|max:100',
+            'description' => 'required|min:3|max:500',
+            'category' => 'required',
+        ]);
+
+        $ringtone = Ringtone::find($id);
+        $fileName = $ringtone->file;
+        $format = $ringtone->format;
+        $size = $ringtone->size;
+        $downloads = $ringtone->downloads;
+        if($request->hasFile('file')){
+            $fileName = $request->file->hashName();
+            $format = $request->file->getClientOriginalExtension();
+            $size = $request->file->getSize();
+            $downloads = 0;
+            $request->file->move(public_path('audio'), $fileName);
+            unlink(public_path('/audio/'.$ringtone->file));
+        }
+        $ringtone->title = $request->get('title');
+        $ringtone->slug = Str::slug($request->get('title'));
+        $ringtone->description = $request->get('description');
+        $ringtone->category_id = $request->get('category');
+        $ringtone->format = $format;
+        $ringtone->size = $size;
+        $ringtone->file = $fileName;
+        $ringtone->downloads = $downloads;
+        $ringtone->save();
+        return redirect()->back()->with('message', 'Ringtone has been updated successfully');
     }
 
     /**
