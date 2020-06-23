@@ -14,7 +14,10 @@
                         </audio>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-secondary btn-sm">Download</button>
+                        <form action="{{route('ringtones.download', $ringtone->id)}}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-secondary btn-sm">Download</button>
+                        </form>
                     </div>
                 </div>
                 <table class="table mt-4">
