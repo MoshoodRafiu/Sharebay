@@ -42,7 +42,7 @@ class RingtoneController extends Controller
             'title' => 'required|min:3|max:100',
             'description' => 'required|min:3|max:500',
             'category' => 'required',
-            'file' => 'required|mimes:mpga,wav|max:5000'
+            'file' => 'required|mimes:mpga,wav|max:7000'
         ]);
         $fileName = $request->file->hashName();
         $format = $request->file->getClientOriginalExtension();
@@ -59,7 +59,7 @@ class RingtoneController extends Controller
             'file' => $fileName,
         ]);
 
-        return redirect()->back()->with('message', 'Ringtone has been added successfully');
+        return redirect()->route('ringtones.index')->with('message', 'Ringtone has been added successfully');
 
     }
 
@@ -123,7 +123,7 @@ class RingtoneController extends Controller
         $ringtone->file = $fileName;
         $ringtone->downloads = $downloads;
         $ringtone->save();
-        return redirect()->back()->with('message', 'Ringtone has been updated successfully');
+        return redirect()->route('ringtones.index')->with('message', 'Ringtone has been updated successfully');
     }
 
     /**
@@ -134,6 +134,9 @@ class RingtoneController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ringtone = Ringtone::find($id);
+        $ringtone->delete();
+        unlink(public_path('/audio/'.$ringtone->file));
+        return redirect()->back()->with('message', 'Ringtone has been updated successfully');
     }
 }
