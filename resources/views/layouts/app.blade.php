@@ -49,10 +49,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/') }}">{{ __('Ringtones') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/wallpapers') }}">{{ __('Wallpapers') }}</a>
+                            </li>
                         @endif
                         @if(Auth::check())
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('ringtones.index') }}">{{ __('Manage Ringtones') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('photos.index') }}">{{ __('Manage Photos') }}</a>
                             </li>
                         @endif
                         <!-- Authentication Links -->

@@ -23,5 +23,6 @@ Route::group(array('namespace'=>'Frontend'), function (){
     Route::get('/ringtones/{id}/{slug}', 'RingtoneController@show')->name('ringtones.show');
     Route::post('/ringtones/download/{id}', 'RingtoneController@download')->name('ringtones.download');
     Route::get('/category/{id}', 'RingtoneController@category')->name('ringtones.category');
+    Route::get('/wallpapers', 'PhotoController@index')->name('wallpaper.index');
 });
 Route::get('/home', 'HomeController@index')->name('home');
