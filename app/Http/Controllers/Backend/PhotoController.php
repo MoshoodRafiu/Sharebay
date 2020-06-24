@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Photo;
+use Image;
 class PhotoController extends Controller
 {
     /**
@@ -38,8 +39,32 @@ class PhotoController extends Controller
         $this->validate($request, [
             'title' => 'required|min:3|max:100',
             'description' => 'required|min:3|max:300',
-            'file' => 'required|mimes:jpeg,jpg,png',
+            'image' => 'required|mimes:jpeg,jpg,png',
         ]);
+
+        $image = $request->file('image');
+        $fileName = $image->hashName();
+        $format = $request->image->getClientOriginalExtension();
+        $size = $request->image->getSize();
+        $path = 'uploads/'.$fileName;
+        $path1 = 'uploads/1280x1024/'.$fileName;
+        $path2 = 'uploads/316x255/'.$fileName;
+        $path3 = 'uploads/118x95/'.$fileName;
+
+        Image::make($image->getRealPath())->resize(800,600)->save($path);
+        Image::make($image->getRealPath())->resize(1280,1024)->save($path1);
+        Image::make($image->getRealPath())->resize(316,255)->save($path2);
+        Image::make($image->getRealPath())->resize(118,95)->save($path3);
+
+        $photo = new Photo;
+        $photo->title = $request->get('title');
+        $photo->description = $request->get('description');
+        $photo->file = $fileName;
+        $photo->format = $format;
+        $photo->size = $size;
+        $photo->save();
+
+        return redirect()->back()->with('message', 'Image uploaded successfully');
     }
 
     /**
