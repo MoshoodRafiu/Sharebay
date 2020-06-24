@@ -100,7 +100,10 @@
         </main>
     </div>
     <div class="bg-dark text-white d-flex justify-content-center align-items-center" style="height: 20vh">
-        <div>&copy Sharebay</div>
+        <div class="text-center">
+            <p class="text-center">&copy Sharebay {{Now()->year}}</p>
+            <p class="text-center">Rafiu Moshood Olakunle</p>
+        </div>
     </div>
 </body>
 </html>
