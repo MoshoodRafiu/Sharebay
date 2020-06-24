@@ -99,5 +99,8 @@
             @yield('content')
         </main>
     </div>
+    <div class="bg-dark text-white d-flex justify-content-center align-items-center" style="height: 20vh">
+        <div>&copy Sharebay</div>
+    </div>
 </body>
 </html>

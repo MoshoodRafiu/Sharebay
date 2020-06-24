@@ -58,7 +58,7 @@ class PhotoController extends Controller
         Image::make($image->getRealPath())->resize(118,95)->save($path3);
 
         $photo = new Photo;
-        $photo->title = $request->get('title');
+        $photo->title = Str::of($request->get('title'))->replace('-',' ');
         $photo->description = $request->get('description');
         $photo->file = $fileName;
         $photo->format = $format;
@@ -130,7 +130,7 @@ class PhotoController extends Controller
             unlink(public_path('/uploads/316x255/'.$photo->file));
             unlink(public_path('/uploads/118x95/'.$photo->file));
         }
-        $photo->title = $request->get('title');
+        $photo->title = Str::of($request->get('title'))->replace('-',' ');
         $photo->description = $request->get('description');
         $photo->file = $fileName;
         $photo->format = $format;

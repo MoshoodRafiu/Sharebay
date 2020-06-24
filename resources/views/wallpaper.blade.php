@@ -17,24 +17,25 @@
                 </div>
             </div>
             <div class="col-md-3 my-4">
-                <form action="" method="post">
+                <form action="{{route('wallpaper.download2', [$wallpaper->id, Str::of($wallpaper->title)->replace(' ','-')])}}" method="post">
                     @csrf
                     <button class="btn btn-primary w-100 my-1">Download 1280x1024</button>
                 </form>
-                <form action="" method="post">
+                <form action="{{route('wallpaper.download1', [$wallpaper->id, Str::of($wallpaper->title)->replace(' ','-')])}}" method="post">
                     @csrf
                     <button class="btn btn-primary w-100 my-1">Download 800x600</button>
                 </form>
-                <form action="" method="post">
+                <form action="{{route('wallpaper.download3', [$wallpaper->id, Str::of($wallpaper->title)->replace(' ','-')])}}" method="post">
                     @csrf
                     <button class="btn btn-primary w-100 my-1">Download 316x255</button>
                 </form>
-                <form action="" method="post">
+                <form action="{{route('wallpaper.download4', [$wallpaper->id, Str::of($wallpaper->title)->replace(' ','-')])}}" method="post">
                     @csrf
                     <button class="btn btn-primary w-100 my-1">Download 118x95</button>
                 </form>
             </div>
             @endforeach
+            {{$wallpapers->links()}}
         </div>
     </div>
 @endsection
