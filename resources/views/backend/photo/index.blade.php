@@ -12,7 +12,7 @@
                         <span class="float-right"><a class="btn btn-primary" href="{{route('photos.create')}}">Add Photo</a></span>
                     </div>
 
-                    <div class="card-body mx-auto">
+                    <div class="card-body mx-auto" style="width: 100%; overflow-x: auto">
                         <table class="table table-striped table-responsive">
                             <thead>
                             <th>Image</th>

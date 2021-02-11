@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Photo;
+use Illuminate\Support\Str;
 use Image;
 class PhotoController extends Controller
 {
@@ -125,10 +126,10 @@ class PhotoController extends Controller
             Image::make($image->getRealPath())->resize(316,255)->save($path2);
             Image::make($image->getRealPath())->resize(118,95)->save($path3);
 
-            unlink(public_path('/uploads/'.$photo->file));
-            unlink(public_path('/uploads/1280x1024/'.$photo->file));
-            unlink(public_path('/uploads/316x255/'.$photo->file));
-            unlink(public_path('/uploads/118x95/'.$photo->file));
+            unlink('/uploads/'.$photo->file);
+            unlink('/uploads/1280x1024/'.$photo->file);
+            unlink('/uploads/316x255/'.$photo->file);
+            unlink('/uploads/118x95/'.$photo->file);
         }
         $photo->title = Str::of($request->get('title'))->replace('-',' ');
         $photo->description = $request->get('description');
@@ -150,10 +151,10 @@ class PhotoController extends Controller
     {
         $photo = Photo::find($id);
         $photo->delete();
-        unlink(public_path('/uploads/'.$photo->file));
-        unlink(public_path('/uploads/1280x1024/'.$photo->file));
-        unlink(public_path('/uploads/316x255/'.$photo->file));
-        unlink(public_path('/uploads/118x95/'.$photo->file));
+        unlink('/uploads/'.$photo->file);
+        unlink('/uploads/1280x1024/'.$photo->file);
+        unlink('/uploads/316x255/'.$photo->file);
+        unlink('/uploads/118x95/'.$photo->file);
         return redirect()->route('photos.index')->with('message', 'Image deleted successfully');
     }
 }

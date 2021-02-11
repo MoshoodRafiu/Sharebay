@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes(['register'=>false]);
+Auth::routes(['register'=>true]);
 Route::group(array('namespace'=>'Backend', 'middleware'=>'auth'), function (){
    Route::resource('/ringtones', 'RingtoneController');
    Route::resource('/photos', 'PhotoController');

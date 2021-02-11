@@ -21,6 +21,7 @@
     </script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="icon" href="{{ asset('img/logo.svg') }}">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
@@ -30,8 +31,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}"><h1>
-                    {{ config('app.name', 'Laravel') }}</h1>
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="{{ asset('img/brand.svg') }}" width='140px' alt="brand">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -95,15 +96,16 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4" style="min-height: 80vh">
             @yield('content')
         </main>
     </div>
     <div class="bg-dark text-white d-flex justify-content-center align-items-center" style="height: 20vh">
         <div class="text-center">
             <p class="text-center">&copy Sharebay {{Now()->year}}</p>
-            <p class="text-center">Rafiu Moshood Olakunle</p>
+            <p class="text-center">Rafiu Olakunle Moshood</p>
         </div>
     </div>
+    @yield('scripts')
 </body>
 </html>

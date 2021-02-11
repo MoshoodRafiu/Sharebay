@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-5">
-            <div class="card mt-4">
-                <div class="card-header bg-dark text-white text-center"><h3>{{ __('Login') }}</h3></div>
+            <div class="card mt-4 shadow" style="border-radius: 10px">
+                <div class="card-header bg-dark text-white text-center pt-3"><h3>{{ __('Login') }}</h3></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -33,7 +33,7 @@
                             @enderror
                         </div>
 
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -43,20 +43,20 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block">
+                            <button type="submit" class="btn p-3 btn-primary btn-block">
                                 {{ __('Login') }}
                             </button>
                         </div>
-                        <div class="form-group text-center">
+                        <!-- <div class="form-group text-center">
                             @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             @endif
-                        </div>
+                        </div> -->
                     </form>
                 </div>
             </div>
